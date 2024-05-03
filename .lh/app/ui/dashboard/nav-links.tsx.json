@@ -1,0 +1,38 @@
+{
+    "sourceFile": "app/ui/dashboard/nav-links.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1714657329026,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1714657443598,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+'use client';\n import {\n   UserGroupIcon,\n   HomeIcon,\n   DocumentDuplicateIcon,\n"
+                },
+                {
+                    "date": 1714657450875,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n   HomeIcon,\n   DocumentDuplicateIcon,\n } from '@heroicons/react/24/outline';\n import Link from 'next/link';\n+import { usePathname } from 'next/navigation';\n \n // Map of links to display in the side navigation.\n // Depending on the size of the application, this would be stored in a database.\n const links = [\n"
+                },
+                {
+                    "date": 1714657460525,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,8 +19,10 @@\n   { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },\n ];\n \n export default function NavLinks() {\n+  const pathname = usePathname();\n+  \n   return (\n     <>\n       {links.map((link) => {\n         const LinkIcon = link.icon;\n"
+                },
+                {
+                    "date": 1714657489081,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,48 @@\n+'use client';\n+import {\n+  UserGroupIcon,\n+  HomeIcon,\n+  DocumentDuplicateIcon,\n+} from '@heroicons/react/24/outline';\n+import Link from 'next/link';\n+import { usePathname } from 'next/navigation';\n+import clsx from 'clsx';\n+\n+// Map of links to display in the side navigation.\n+// Depending on the size of the application, this would be stored in a database.\n+const links = [\n+  { name: 'Home', href: '/dashboard', icon: HomeIcon },\n+  {\n+    name: 'Invoices',\n+    href: '/dashboard/invoices',\n+    icon: DocumentDuplicateIcon,\n+  },\n+  { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },\n+];\n+\n+export default function NavLinks() {\n+  const pathname = usePathname();\n+\n+  return (\n+    <>\n+      {links.map((link) => {\n+        const LinkIcon = link.icon;\n+        return (\n+          <Link\n+            key={link.name}\n+            href={link.href}\n+            className={clsx(\n+              'flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3',\n+              {\n+                'bg-sky-100 text-blue-600': pathname === link.href,\n+              },\n+            )}\n+          >\n+            <LinkIcon className=\"w-6\" />\n+            <p className=\"hidden md:block\">{link.name}</p>\n+          </Link>\n+        );\n+      })}\n+    </>\n+  );\n+}\n"
+                },
+                {
+                    "date": 1714657496380,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,10 @@\n ];\n \n export default function NavLinks() {\n   const pathname = usePathname();\n-\n+  console.log(pathname);\n+  \n   return (\n     <>\n       {links.map((link) => {\n         const LinkIcon = link.icon;\n@@ -45,46 +46,4 @@\n       })}\n     </>\n   );\n }\n-'use client';\n-import {\n-  UserGroupIcon,\n-  HomeIcon,\n-  DocumentDuplicateIcon,\n-} from '@heroicons/react/24/outline';\n-import Link from 'next/link';\n-import { usePathname } from 'next/navigation';\n-\n-// Map of links to display in the side navigation.\n-// Depending on the size of the application, this would be stored in a database.\n-const links = [\n-  { name: 'Home', href: '/dashboard', icon: HomeIcon },\n-  {\n-    name: 'Invoices',\n-    href: '/dashboard/invoices',\n-    icon: DocumentDuplicateIcon,\n-  },\n-  { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },\n-];\n-\n-export default function NavLinks() {\n-  const pathname = usePathname();\n-  \n-  return (\n-    <>\n-      {links.map((link) => {\n-        const LinkIcon = link.icon;\n-        return (\n-          <Link\n-            key={link.name}\n-            href={link.href}\n-            className=\"flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3\"\n-          >\n-            <LinkIcon className=\"w-6\" />\n-            <p className=\"hidden md:block\">{link.name}</p>\n-          </Link>\n-        );\n-      })}\n-    </>\n-  );\n-}\n"
+                }
+            ],
+            "date": 1714657329026,
+            "name": "Commit-0",
+            "content": "import {\n  UserGroupIcon,\n  HomeIcon,\n  DocumentDuplicateIcon,\n} from '@heroicons/react/24/outline';\nimport Link from 'next/link';\n\n// Map of links to display in the side navigation.\n// Depending on the size of the application, this would be stored in a database.\nconst links = [\n  { name: 'Home', href: '/dashboard', icon: HomeIcon },\n  {\n    name: 'Invoices',\n    href: '/dashboard/invoices',\n    icon: DocumentDuplicateIcon,\n  },\n  { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },\n];\n\nexport default function NavLinks() {\n  return (\n    <>\n      {links.map((link) => {\n        const LinkIcon = link.icon;\n        return (\n          <Link\n            key={link.name}\n            href={link.href}\n            className=\"flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3\"\n          >\n            <LinkIcon className=\"w-6\" />\n            <p className=\"hidden md:block\">{link.name}</p>\n          </Link>\n        );\n      })}\n    </>\n  );\n}\n"
+        }
+    ]
+}
